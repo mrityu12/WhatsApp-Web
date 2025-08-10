@@ -1,0 +1,416 @@
+/* Header Base Styles */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  background-color: #202c33;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0 16px;
+  position: relative;
+  z-index: 100;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Menu and Navigation Buttons */
+.menu-btn,
+.back-btn,
+.action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: #aebac1;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.menu-btn:hover,
+.back-btn:hover,
+.action-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+.menu-btn:active,
+.back-btn:active,
+.action-btn:active {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: scale(0.95);
+}
+
+/* Default Header Styles */
+.header-default .header-title h1 {
+  color: #ffffff;
+  font-size: 19px;
+  font-weight: 400;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Chat Header Styles */
+.chat-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+  flex: 1;
+  min-width: 0;
+}
+
+.chat-info:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.chat-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.chat-name {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 400;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.2;
+}
+
+.chat-status {
+  margin-top: 2px;
+}
+
+.status-text {
+  color: #8696a0;
+  font-size: 13px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.status-text.online {
+  color: #25d366;
+}
+
+/* Typing Indicator */
+.typing-indicator {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #25d366;
+  font-size: 13px;
+}
+
+.typing-dots {
+  display: flex;
+  gap: 2px;
+}
+
+.typing-dots span {
+  width: 3px;
+  height: 3px;
+  background-color: #25d366;
+  border-radius: 50%;
+  animation: typing-bounce 1.4s infinite ease-in-out;
+}
+
+.typing-dots span:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.typing-dots span:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+.typing-dots span:nth-child(3) {
+  animation-delay: 0s;
+}
+
+/* Search Container */
+.search-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #202c33;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  z-index: 101;
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  background-color: #2a3942;
+  border-radius: 8px;
+  flex: 1;
+  height: 40px;
+  overflow: hidden;
+}
+
+.search-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  font-size: 15px;
+  padding: 0 16px;
+  height: 100%;
+}
+
+.search-input::placeholder {
+  color: #8696a0;
+}
+
+.search-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: none;
+  color: #8696a0;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.search-close:hover {
+  color: #ffffff;
+}
+
+/* Dropdown Styles */
+.dropdown-container {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background-color: #233138;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  min-width: 200px;
+  overflow: hidden;
+  z-index: 1000;
+  animation: dropdown-fade-in 0.15s ease-out;
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  color: #e9edef;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.dropdown-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dropdown-item.danger {
+  color: #ff6b6b;
+}
+
+.dropdown-item.danger:hover {
+  background-color: rgba(255, 107, 107, 0.1);
+}
+
+.dropdown-icon {
+  font-size: 16px;
+}
+
+/* Unread Badge */
+.unread-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background-color: #25d366;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 10px;
+  min-width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Animations */
+@keyframes typing-bounce {
+  0%, 80%, 100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1.3);
+    opacity: 1;
+  }
+}
+
+@keyframes dropdown-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header {
+    height: 56px;
+    padding: 0 8px;
+  }
+  
+  .header-left {
+    gap: 8px;
+  }
+  
+  .header-actions {
+    gap: 4px;
+  }
+  
+  .menu-btn,
+  .back-btn,
+  .action-btn {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .chat-name {
+    font-size: 15px;
+  }
+  
+  .status-text,
+  .typing-indicator {
+    font-size: 12px;
+  }
+  
+  .dropdown-menu {
+    min-width: 180px;
+    right: -8px;
+  }
+  
+  .search-form {
+    height: 36px;
+  }
+  
+  .search-input {
+    font-size: 14px;
+    padding: 0 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 0 4px;
+  }
+  
+  .chat-details {
+    max-width: 180px;
+  }
+  
+  .header-actions {
+    gap: 2px;
+  }
+  
+  .dropdown-menu {
+    min-width: 160px;
+  }
+}
+
+/* Dark mode enhancements */
+@media (prefers-color-scheme: dark) {
+  .header {
+    background-color: #1f2937;
+    border-bottom-color: rgba(255, 255, 255, 0.08);
+  }
+  
+  .search-form {
+    background-color: #374151;
+  }
+  
+  .dropdown-menu {
+    background-color: #1f2937;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .header {
+    border-bottom: 2px solid #ffffff;
+  }
+  
+  .menu-btn,
+  .back-btn,
+  .action-btn {
+    border: 1px solid transparent;
+  }
+  
+  .menu-btn:hover,
+  .back-btn:hover,
+  .action-btn:hover {
+    border-color: #ffffff;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .typing-dots span {
+    animation: none;
+  }
+  
+  .dropdown-menu {
+    animation: none;
+  }
+  
+  .menu-btn,
+  .back-btn,
+  .action-btn,
+  .chat-info {
+    transition: none;
+  }
+}

@@ -1,0 +1,322 @@
+.status-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.status-indicator-text {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #8696a0;
+}
+
+.status-dot {
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Size variations */
+.status-indicator.small .status-dot,
+.status-indicator-text.small .status-dot {
+  width: 8px;
+  height: 8px;
+}
+
+.status-indicator.medium .status-dot,
+.status-indicator-text.medium .status-dot {
+  width: 10px;
+  height: 10px;
+}
+
+.status-indicator.large .status-dot,
+.status-indicator-text.large .status-dot {
+  width: 12px;
+  height: 12px;
+}
+
+/* Status colors */
+.status-indicator.online .status-dot {
+  background: #00a884;
+  animation: onlinePulse 2s infinite;
+}
+
+.status-indicator.offline .status-dot {
+  background: #8696a0;
+}
+
+.status-indicator.typing .status-dot {
+  display: none;
+}
+
+/* Text status colors */
+.status-indicator-text.online .status-text {
+  color: #00a884;
+}
+
+.status-indicator-text.typing .status-text {
+  color: #00a884;
+  font-style: italic;
+}
+
+.status-indicator-text.offline .status-text {
+  color: #8696a0;
+}
+
+/* Typing indicators */
+.typing-dots {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.typing-dots span {
+  background: #00a884;
+  border-radius: 50%;
+  animation: typingDots 1.4s infinite ease-in-out;
+}
+
+.status-indicator.small .typing-dots span {
+  width: 4px;
+  height: 4px;
+}
+
+.status-indicator.medium .typing-dots span {
+  width: 5px;
+  height: 5px;
+}
+
+.status-indicator.large .typing-dots span {
+  width: 6px;
+  height: 6px;
+}
+
+.typing-animation {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.typing-animation span {
+  width: 4px;
+  height: 4px;
+  background: #00a884;
+  border-radius: 50%;
+  animation: typingDots 1.4s infinite ease-in-out;
+}
+
+.typing-dots span:nth-child(1),
+.typing-animation span:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.typing-dots span:nth-child(2),
+.typing-animation span:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+.typing-dots span:nth-child(3),
+.typing-animation span:nth-child(3) {
+  animation-delay: 0s;
+}
+
+/* Animations */
+@keyframes onlinePulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes typingDots {
+  0%, 60%, 100% {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+  30% {
+    transform: translateY(-8px);
+    opacity: 1;
+  }
+}
+
+/* Status with badges */
+.status-indicator.with-badge {
+  position: relative;
+}
+
+.status-badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  background: #ff4444;
+  color: white;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  font-size: 10px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #ffffff;
+}
+
+/* Away status */
+.status-indicator.away .status-dot {
+  background: #ffcd02;
+}
+
+.status-indicator-text.away .status-text {
+  color: #ffcd02;
+}
+
+/* Busy status */
+.status-indicator.busy .status-dot {
+  background: #ff9500;
+}
+
+.status-indicator-text.busy .status-text {
+  color: #ff9500;
+}
+
+/* Do not disturb */
+.status-indicator.dnd .status-dot {
+  background: #ff4757;
+}
+
+.status-indicator-text.dnd .status-text {
+  color: #ff4757;
+}
+
+/* Invisible status */
+.status-indicator.invisible .status-dot {
+  background: #8696a0;
+  opacity: 0.5;
+}
+
+.status-indicator-text.invisible .status-text {
+  color: #8696a0;
+  opacity: 0.7;
+}
+
+/* Mobile/Desktop indicators */
+.status-indicator.mobile .status-dot::after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  height: 6px;
+  background: #ffffff;
+  border-radius: 1px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Group status indicators */
+.status-indicator.group {
+  background: linear-gradient(45deg, #00a884, #128c7e);
+}
+
+.status-indicator.group .status-dot {
+  background: #ffffff;
+  border: 1px solid #00a884;
+}
+
+/* Status transitions */
+.status-dot {
+  transition: all 0.3s ease;
+}
+
+.status-text {
+  transition: color 0.3s ease;
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .status-dot {
+    border: 1px solid currentColor;
+  }
+  
+  .typing-dots span,
+  .typing-animation span {
+    border: 1px solid #00a884;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .status-dot,
+  .typing-dots span,
+  .typing-animation span {
+    animation: none;
+  }
+  
+  .status-dot,
+  .status-text {
+    transition: none;
+  }
+}
+
+/* Dark theme support */
+@media (prefers-color-scheme: dark) {
+  .status-indicator-text {
+    color: #aebac5;
+  }
+  
+  .status-indicator-text.offline .status-text {
+    color: #8696a0;
+  }
+  
+  .status-badge {
+    border-color: #2a2a2a;
+  }
+}
+
+/* Loading state */
+.status-indicator.loading .status-dot {
+  background: #e0e0e0;
+  animation: statusLoading 1.5s ease-in-out infinite;
+}
+
+@keyframes statusLoading {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Error state */
+.status-indicator.error .status-dot {
+  background: #ff4444;
+  animation: errorPulse 1s ease-in-out infinite;
+}
+
+@keyframes errorPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+/* Tooltip support */
+.status-indicator[title],
+.status-indicator-text[title] {
+  cursor: help;
+}
+
+/* Focus styles for accessibility */
+.status-indicator:focus-visible,
+.status-indicator-text:focus-visible {
+  outline: 2px solid #00a884;
+  outline-offset: 2px;
+  border-radius: 4px;
+}

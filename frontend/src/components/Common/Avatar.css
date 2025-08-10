@@ -1,0 +1,238 @@
+.avatar-container {
+  position: relative;
+  display: inline-block;
+}
+
+.avatar {
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background: #ddd;
+  color: #ffffff;
+  font-weight: 500;
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.avatar-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.avatar-initials {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.online-indicator {
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.1);
+}
+
+.online-indicator.online {
+  background: #00a884;
+}
+
+.online-indicator.offline {
+  background: #8696a0;
+}
+
+/* Size variations */
+.avatar-small .avatar {
+  width: 32px;
+  height: 32px;
+}
+
+.avatar-small .avatar-initials {
+  font-size: 12px;
+}
+
+.avatar-small .online-indicator {
+  width: 10px;
+  height: 10px;
+  bottom: 0;
+  right: 0;
+  border-width: 1.5px;
+}
+
+.avatar-medium .avatar {
+  width: 40px;
+  height: 40px;
+}
+
+.avatar-medium .avatar-initials {
+  font-size: 14px;
+}
+
+.avatar-medium .online-indicator {
+  width: 12px;
+  height: 12px;
+  bottom: 0;
+  right: 0;
+  border-width: 2px;
+}
+
+.avatar-large .avatar {
+  width: 48px;
+  height: 48px;
+}
+
+.avatar-large .avatar-initials {
+  font-size: 16px;
+}
+
+.avatar-large .online-indicator {
+  width: 14px;
+  height: 14px;
+  bottom: 0;
+  right: 0;
+  border-width: 2px;
+}
+
+.avatar-xlarge .avatar {
+  width: 64px;
+  height: 64px;
+}
+
+.avatar-xlarge .avatar-initials {
+  font-size: 20px;
+}
+
+.avatar-xlarge .online-indicator {
+  width: 16px;
+  height: 16px;
+  bottom: 2px;
+  right: 2px;
+  border-width: 2px;
+}
+
+/* Hover effects */
+.avatar-container:hover .avatar {
+  transform: scale(1.05);
+  transition: transform 0.2s ease;
+}
+
+/* Group avatar styling */
+.avatar.group-avatar {
+  background: linear-gradient(45deg, #00a884, #128c7e);
+}
+
+/* Status indicators */
+.avatar-container.status-busy .online-indicator {
+  background: #ff9500;
+}
+
+.avatar-container.status-away .online-indicator {
+  background: #ffcd02;
+}
+
+.avatar-container.status-dnd .online-indicator {
+  background: #ff4757;
+}
+
+/* Animation for online status changes */
+.online-indicator {
+  transition: all 0.3s ease;
+}
+
+.online-indicator.online {
+  animation: onlineStatusPulse 2s ease-in-out infinite;
+}
+
+@keyframes onlineStatusPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+}
+
+/* Loading state */
+.avatar.loading {
+  background: linear-gradient(90deg, #f0f0f0 0%, #e0e0e0 50%, #f0f0f0 100%);
+  background-size: 200% 100%;
+  animation: avatarLoading 1.5s ease-in-out infinite;
+}
+
+@keyframes avatarLoading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Error state */
+.avatar.error {
+  background: #ff4757;
+  color: #ffffff;
+}
+
+.avatar.error .avatar-initials::before {
+  content: '!';
+}
+
+/* Profile picture placeholder */
+.avatar.no-image {
+  background: #8696a0;
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .avatar {
+    border: 2px solid currentColor;
+  }
+  
+  .online-indicator {
+    border-width: 3px;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .avatar-container:hover .avatar,
+  .online-indicator {
+    transform: none;
+    animation: none;
+    transition: none;
+  }
+}
+
+/* Focus styles for accessibility */
+.avatar-container:focus-visible {
+  outline: 2px solid #00a884;
+  outline-offset: 2px;
+  border-radius: 50%;
+}
+
+/* Dark theme support */
+@media (prefers-color-scheme: dark) {
+  .online-indicator {
+    border-color: #2a2a2a;
+  }
+  
+  .avatar.loading {
+    background: linear-gradient(90deg, #3a3a3a 0%, #4a4a4a 50%, #3a3a3a 100%);
+    background-size: 200% 100%;
+  }
+}
